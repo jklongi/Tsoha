@@ -1,0 +1,41 @@
+html { 
+  background: url(drinkkiwall.png) no-repeat center center fixed; 
+  background-size: 100% auto;
+}
+a {
+color: black;
+}
+
+#paasisalto { 
+width:900px; 
+margin:0 auto; 
+
+}
+
+#otsikko { 
+background-color:#3e8bb3; 
+font-size:50px;
+text-align:center;
+border:3px solid black; 
+opacity:0.9; 
+margin-bottom: 20px;
+}
+
+#sisalto { 
+overflow:auto;
+background-color:#3e8bb3; 
+opacity:0.9;
+border:3px solid black;
+}
+
+#sivupalkki {
+float:left; 
+width:130px; 
+background-color:#3e8bb3;
+min-height:500px;
+opacity:0.9;
+border-right:3px solid black;
+margin-right: 30px;
+margin-left: 20px;
+}
+

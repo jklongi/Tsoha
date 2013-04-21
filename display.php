@@ -15,7 +15,7 @@
 				$rivi = mysqli_fetch_row($perustiedot);
 				$maara = mysqli_num_rows($perustiedot);
 				
-				echo "Drinkki: $rivi[1] <br/>Tyyppi: $rivi[2]<br/>Lasi: $rivi[3] <br/>Lisaaja: $rivi[4]<br/>";
+				echo "Nimi: $rivi[1] <br/>Tyyppi: $rivi[2]<br/>Lasi: $rivi[3] <br/>Lisaaja: $rivi[4]<br/>";
 				
 				$ainekset = mysqli_query($connection ,"
 					
@@ -37,9 +37,15 @@
 					$maara = $raaka_ainekset["maara"];
 					$ainesnimi = $aineet["nimi"];
 					$yksikko = $aineet["yksikko"];
+					$ohjeet = $aineet["yksikko"];
 					echo "$ainesnimi $maara $yksikko";
 					echo ", ";
 				}
+				echo "<br/> ";
+				echo "<br/> ";
+				echo "$rivi[5] ";
+				echo "<br/> ";
+				echo "<br/> ";
 				
 				// while ($tuloslista = mysqli_fetch_assoc($ainekset)) {
 					// $ainesnimi = $tuloslista["nimi"];
@@ -49,7 +55,10 @@
 					// echo "$ainesnimi $maara $yksikko";
 					// echo ", ";
 				// }
-
+				if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
+					echo "<a href=\"index.php?page=deletecomment&id=".$drinkID."\">Hallitse kommentteja</a>";
+					echo "<br/> ";
+				}
 			}
 	?>
 	<body>

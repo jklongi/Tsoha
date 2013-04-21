@@ -6,8 +6,7 @@
 		{
 			$tunnus = array_map('mysql_real_escape_string', $_POST);
 			$tunnus['salasana'] = ($tunnus['salasana']);
-			
-			session_register($tunnus['kayttaja']);
+			//session_register($tunnus['kayttaja']);
 			
 		
 			$kayttaja = $tunnus['kayttaja'];
@@ -15,7 +14,7 @@
 			
 
 			$query = mysqli_query($connection ,"
-				SELECT 	kayttaja, salasana
+				SELECT 	*
 				FROM 	kayttajat
 				WHERE 	kayttaja = '$kayttaja'
 				AND 	salasana = '$salasana'
@@ -26,9 +25,11 @@
 			$maara = mysqli_num_rows($query);
 			
 			if ($maara == 1) {
-					$_SESSION['kayttaja'] = $rivi[0];
-					$_SESSION['admin'] = $rivi[4];
-					header("location: /index.php");
+				session_start();
+				$_SESSION['nimi'] = $rivi[1];	
+				$_SESSION['kayttaja'] = $rivi[0];
+				$_SESSION['admin'] = $rivi[4];
+				header("location: /index.php");
 			}
 				
 			else {

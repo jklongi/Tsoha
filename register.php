@@ -22,6 +22,18 @@
 					echo "Täytithän tähdellä merkityt kentät?";
 					die();
 				}
+				$kayttajat = mysqli_query($connection ,"
+				SELECT 	*
+				FROM 	kayttajat
+				"
+				) or die('Kysely ei onnistunut');
+				while ($rivi = mysqli_fetch_assoc($kayttajat)) {
+					$verrattava = $rivi["kayttaja"];
+					if($verrattava == $tunnus){
+						echo "Tunnus on jo käytössä!";
+						die();
+					}
+				}
 				
 				$insert = mysqli_query($connection, "
 					INSERT INTO kayttajat
@@ -29,7 +41,7 @@
 					VALUES 
 					('$tunnus', '$salasana', '$email', '0');
 					") or die ('Lisäys ei onnistunut');
-
+					echo "<br />";
 					echo "Rekisteröityminen onnistui!<br />";
 					echo "Voit nyt kirjautua sisään.";
 					
@@ -43,10 +55,10 @@
 		<h1>Rekisteröidy:</h1>
 		<h5>Täytä ainakin tähdellä merkityt kentät</h5>
 		<form action ="index.php?page=register" method = "post" >
-			<label>Tunnus*</label><input type="text" name = "tunnus" /><br />
-			<label>Email</label><input type="text" name = "email"/><br />
-			<label>Salasana*</label><input type="password" name = "salasana"/><br />
-			<label>Vahvista Salasana*</label><input type="password" name = "vsalasana"/><br />
+			<label>Tunnus*</label><br /><input type="text" name = "tunnus" /><br />
+			<label>Email</label><br /><input type="email" name = "email"/><br />
+			<label>Salasana*</label><br /><input type="password" name = "salasana"/><br />
+			<label>Vahvista Salasana*</label><br /><input type="password" name = "vsalasana"/><br />
 			<label></label><input type="submit" value="Rekisteröidy" />
 		</form>
 	</body>

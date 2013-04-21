@@ -25,7 +25,17 @@
 						if ($_GET['page'] === "logout")
 							include 'logout.php';
 						if ($_GET['page'] === "register")
-							include 'register.php';							
+							include 'register.php';	
+						if ($_GET['page'] === "addcocktail")
+							include 'addcocktail.php';
+						if ($_GET['page'] === "addingredient")
+							include 'addingredient.php'; 
+						if ($_GET['page'] === "users")
+							include 'users.php';
+						if ($_GET['page'] === "deleteingredient")
+							include 'deleteingredient.php';
+						if ($_GET['page'] === "deletecomment")
+							include 'deletecomment.php';
 					}
 					else {
 						echo "<h4><p>Tervetuloa Joonaksen drinkkiarkistoon!</p></h4>";

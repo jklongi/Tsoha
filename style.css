@@ -6,6 +6,10 @@ a {
 color: black;
 }
 
+table{
+border-color: black;
+}
+
 #paasisalto { 
 width:900px; 
 margin:0 auto; 
@@ -32,10 +36,14 @@ border:3px solid black;
 float:left; 
 width:130px; 
 background-color:#3e8bb3;
-min-height:500px;
+min-height:700px;
 opacity:0.9;
 border-right:3px solid black;
 margin-right: 30px;
 margin-left: 20px;
+}
+
+#b{ 
+color: red;
 }
 

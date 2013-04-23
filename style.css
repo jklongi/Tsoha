@@ -30,9 +30,16 @@ overflow:auto;
 background-color:#3e8bb3; 
 opacity:0.9;
 border:3px solid black;
+
+}
+#main{ 
+overflow-y: auto;
+min-height:700px;
+max-height:700px;
 }
 
 #sivupalkki {
+overflow:auto;
 float:left; 
 width:130px; 
 background-color:#3e8bb3;
@@ -43,7 +50,4 @@ margin-right: 30px;
 margin-left: 20px;
 }
 
-#b{ 
-color: red;
-}
 

@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<div id="paasisalto">
+		
 			<div id="otsikko"> Drinkkiarkisto </div>
 			<div id="sisalto">
 				<div id="sivupalkki">
@@ -28,14 +29,16 @@
 							include 'register.php';	
 						if ($_GET['page'] === "addcocktail")
 							include 'addcocktail.php';
-						if ($_GET['page'] === "addingredient")
-							include 'addingredient.php'; 
 						if ($_GET['page'] === "users")
 							include 'users.php';
-						if ($_GET['page'] === "deleteingredient")
-							include 'deleteingredient.php';
+						if ($_GET['page'] === "allingredients")
+							include 'allingredients.php';
 						if ($_GET['page'] === "deletecomment")
 							include 'deletecomment.php';
+						if ($_GET['page'] === "allcocktails")
+							include 'allcocktails.php';	
+						if ($_GET['page'] === "editcocktail")
+							include 'editcocktail.php';
 					}
 					else {
 						echo "<h4><p>Tervetuloa Joonaksen drinkkiarkistoon!</p></h4>";

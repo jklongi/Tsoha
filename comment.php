@@ -28,7 +28,7 @@
 	"
 	) or die('Kysely ei onnistunut');
 	?>
-	<TEXTAREA background-color: lightyellow style="resize:none; background-color:#FFEE79" ROWS = 7 COLS = 60 name = "kommentit" readonly ><?php
+	<TEXTAREA background-color: lightyellow style="resize:none; background-color:#FFEE79" ROWS = 10 COLS = 70 name = "kommentit" readonly ><?php
 	while ($rivi = mysqli_fetch_assoc($tulokset)) {
 		$nimiID = $rivi["kayttajaID"];
 		$kommenttiID = $rivi["kommenttiID"];
@@ -59,6 +59,7 @@
 			</form>	
 		</body>
 	<?php
+	echo "<br/><br/>";
 		}
 	?>
 </html>

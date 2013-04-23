@@ -24,9 +24,9 @@ if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
 	echo "<br/> ";
 	echo "<br/> ";
 	echo "<a href=\"/index.php?page=addcocktail\">Lisää drinkki</a>" . "<br />";
-	echo "<a href=\"/index.php?page=addingredient\">Lisää raaka-aine</a>" . "<br />";
-	echo "<a href=\"/index.php?page=deleteingredient\">Poista raaka-aine</a>" . "<br />";
-	echo "<a href=\"/index.php?page=users\">Kayttajat</a>";
+	echo "<a href=\"/index.php?page=allingredients\">Raaka-aineet</a>" . "<br />";
+	echo "<a href=\"/index.php?page=users\">Kayttajat</a>" . "<br />";
+	echo "<a href=\"/index.php?page=allcocktails\">Drinkit</a>";
 }
     
     

@@ -13,6 +13,7 @@
 			<label>Shotti</label><input type="checkbox" value="Yes" name = "shotti"/>
 			<label>Alkoholiton</label><input type="checkbox" value="Yes" name = "alkoholiton" /
 			<label>Kuuma juoma</label><input type="checkbox" value="Yes" name = "kuuma" />
+			<label>Booli</label><input type="checkbox" value="Yes" name = "booli" />
 		</form>
 	</body>
 	<br/>
@@ -26,7 +27,7 @@
 				"
 				) or die('Kysely ei onnistunut');
 				echo "Drinkki poistettu onnistuneesti!";
-			}
+		}
 			
 		if (isset($_POST['submit']))
 			{
@@ -52,8 +53,13 @@
 				} else{
 					$kuuma = NULL;
 				}
+				if(isset($_POST['booli'])){
+					$booli = "Booli";
+				} else{
+					$booli = NULL;
+				}
 
-				if(is_null($drink) && is_null($shotti)&& is_null($alkoholiton) && is_null($kuuma)){
+				if(is_null($drink) && is_null($shotti)&& is_null($alkoholiton) && is_null($kuuma) && is_null($booli)){
 					$tulokset = mysqli_query($connection ,"
 						SELECT 	*
 						FROM 	drinkki
@@ -67,7 +73,7 @@
 						FROM 	drinkki
 						WHERE drinkkinimi LIKE '%$hakusana%'
 						AND tyyppi = '$shotti' OR tyyppi = '$alkoholiton'
-						OR tyyppi = '$kuuma' OR tyyppi = '$drink'
+						OR tyyppi = '$kuuma' OR tyyppi = '$drink' OR tyyppi = '$booli'
 						ORDER BY drinkkinimi ASC
 					"
 					) or die('Kysely ei onnistunut');
@@ -83,9 +89,6 @@
 					echo " ";
 					echo $rivi["tyyppi"];
 					echo " ";
-					if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
-						echo "<a href=\"index.php?delid=".$linkID."\">Poista</a>";
-					}
 					echo "<br/>";
 				}
 

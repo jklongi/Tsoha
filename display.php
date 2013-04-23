@@ -47,14 +47,6 @@
 				echo "<br/> ";
 				echo "<br/> ";
 				
-				// while ($tuloslista = mysqli_fetch_assoc($ainekset)) {
-					// $ainesnimi = $tuloslista["nimi"];
-					// $yksikko = $tuloslista["yksikko"];
-					// $maara = $maarat["maara"];
-		
-					// echo "$ainesnimi $maara $yksikko";
-					// echo ", ";
-				// }
 				if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
 					echo "<a href=\"index.php?page=deletecomment&id=".$drinkID."\">Hallitse kommentteja</a>";
 					echo "<br/> ";

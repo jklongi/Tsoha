@@ -8,6 +8,7 @@
 			$salasana1 = $_POST['salasana'];
 			$vsalasana1 = $_POST['vsalasana'];
 			$email1 = $_POST['email'];
+			//tarkista salasanat
 			if($salasana1 == $vsalasana1){
 				$tunnus = mysql_real_escape_string($_POST['tunnus']);
 				$salasana = mysql_real_escape_string($_POST['salasana']);
@@ -27,6 +28,7 @@
 				FROM 	kayttajat
 				"
 				) or die('Kysely ei onnistunut');
+				//tarkista onko tunnus jo olemassa
 				while ($rivi = mysqli_fetch_assoc($kayttajat)) {
 					$verrattava = $rivi["kayttaja"];
 					if($verrattava == $tunnus){

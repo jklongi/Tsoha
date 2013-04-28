@@ -3,6 +3,7 @@
 	<?php
 		include("database.php");
 		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
+		//drinkin poisto id=jotain avulla
 		if (isset($_GET['delid'])){
 				$poistettava = $_GET['delid'];
 				$drinkki = mysqli_query($connection ,"
@@ -19,7 +20,7 @@
 				FROM 	drinkki
 			"
 			) or die('Kysely ei onnistunut');
-			
+			//taulukko jossa kaikki drinkit ja niiden tiedot
 			echo "<br /><br />";
 			echo "<table border=1>";
 			echo "<tr>";

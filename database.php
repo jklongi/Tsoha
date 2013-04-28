@@ -1,4 +1,5 @@
 <?php
+	//yhteys databaseen
     $host = "localhost";
     $database = "jlongi";
     $user = "jlongi";

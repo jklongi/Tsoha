@@ -3,9 +3,11 @@
 	<?php
 	$drink = array_map('mysql_real_escape_string', $_GET);
 	$drinkID = $drink['cocktailid'];
+	//jos POST uusi kommentti
 	if (isset($_POST['komment'])){
 		$kommentti = mysql_real_escape_string($_POST['kommentti']); 
 		$nimi = $_SESSION['kayttaja'];
+		
 		if($kommentti == NULL){
 			echo "Kirjoitit tyhjän kommentin";
 			die();
@@ -19,7 +21,7 @@
 		echo "Kiitos kommentista!<br />";
 	}
 	
-	
+	//Nykyiset drinkkiin liittyvät kommentit, uusin ensimmäisenä, limit 30
 	$tulokset = mysqli_query($connection ,"
 		SELECT *
 		FROM 	kommentti
@@ -28,7 +30,10 @@
 	"
 	) or die('Kysely ei onnistunut');
 	?>
-	<TEXTAREA background-color: lightyellow style="resize:none; background-color:#FFEE79" ROWS = 10 COLS = 70 name = "kommentit" readonly ><?php
+	
+	<TEXTAREA background-color: lightyellow style="resize:none; background-color:#FFEE79" ROWS = 10 COLS = 70 name = "kommentit" readonly >
+	<?php
+	//Kommentit textareassa
 	while ($rivi = mysqli_fetch_assoc($tulokset)) {
 		$nimiID = $rivi["kayttajaID"];
 		$kommenttiID = $rivi["kommenttiID"];
@@ -41,7 +46,13 @@
 		) or die('Kysely ei onnistunut');
 		$tulos = mysqli_fetch_row($etsinimi);
 		$nimimerkki = $tulos[1];
-		echo"$nimimerkki: ";
+		$admin = $tulos[4];
+		if($admin == 1){
+			echo"$nimimerkki";
+			echo"[admin]: ";
+		} else {
+			echo"$nimimerkki: ";
+		}
 		echo "$kommentti ";
 		echo "\n";
 		echo "-------------------------------";
@@ -49,6 +60,7 @@
 	}
 	?></TEXTAREA>
 	<?php
+	//Kommentin lisäys vain käyttäjille
 		if(isset($_SESSION['kayttaja'])) {
 	?>
 			<h5>Lisää kommentti</h5>

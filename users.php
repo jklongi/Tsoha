@@ -2,8 +2,9 @@
 <html>
 	<?php
 		include("database.php");
+		//ylläpito
 		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
-		
+			//mikäli id=jotain, se poistetaan, myös käyttäjän kommentit poistetaan
 			if (isset($_GET['id'])){
 				$poistettava = $_GET['id'];
 				$kayttaja = mysqli_query($connection ,"
@@ -20,6 +21,7 @@
 				) or die('Kysely ei onnistunut');
 				echo "Käyttäjä poistettu onnistuneesti!";
 			}
+			//Vaihdetaan ylläpitäjän arvo riippuen aikaisemmasta
 			if (isset($_GET['yllapitaja'])){
 				$vaihdettava = $_GET['yllapitaja'];
 				$nykyinen = mysqli_query($connection, "
@@ -46,7 +48,7 @@
 				FROM 	kayttajat
 			"
 			) or die('Kysely ei onnistunut');
-			
+			//taulukko käyttäjistä
 			echo "<br /><br />";
 			echo "<table border=1>";
 			echo "<tr>";

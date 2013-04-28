@@ -24,6 +24,7 @@
 			echo "Lisäys onnistui!<br />";
 			echo "<h3>";
 			echo "Älä unohda lisätä raaka-aineita drinkkiisi <br /><br />";
+			//Linkki raaka-aineiden muokkaukseen
 			echo"<a href=\"/index.php?page=allcocktails\">Drinkit</a>";
 			echo "</h3>";
 
@@ -52,23 +53,23 @@
 					  <option value="Aromilasi">Aromilasi</option>
 					  <option value="Boolimalja">Boolimalja</option>
 					  <option value="Collinslasi">Collinslasi</option>
-					  <option value="Highball">Highball-lasi</option>
+					  <option value="Highball -lasi">Highball-lasi</option>
 					  <option value="Hurricanelasi">Hurricanelasi</option>
-					  <option value="Irishcoffee">Irish coffee -lasi</option>
+					  <option value="Irish Coffee -lasi">Irish coffee -lasi</option>
 					  <option value="Likoorilasi">Liköörilasi</option>
 					  <option value="Kuohuviinilasi">Kuohuviinilasi</option>
 					  <option value="Margaritalasi">Margaritalasi</option>
 					  <option value="Martinilasi">Martinilasi</option>
-					  <option value="Oldfashioned">Old fashioned -lasi</option>
+					  <option value="Old Fashioned -lasi">Old Fashioned -lasi</option>
 					  <option value="Olutlasi">Olutlasi</option>
-					  <option value="Ontherocks">On the rocks -lasi</option>
+					  <option value="On the rocks -lasi">On the rocks -lasi</option>
 					  <option value="Shottilasi">Shottilasi</option>
 					  <option value="Totilasi">Totilasi</option>
 					  <option value="Valkoviinilasi">Valkoviinilasi</option>
 					  <option value="Muu">Muu</option>
 					</select>
 				</p>
-				<label>Ohjeet: </label><br/><TEXTAREA style="resize:none" ROWS = 3 COLS = 30 name = "ohjeet"></TEXTAREA><br />
+				<label>Ohjeet: </label><br/><TEXTAREA style="resize:none" ROWS = 5 COLS = 50 name = "ohjeet"></TEXTAREA><br />
 
 				<label></label><input type="submit" value="Lisää Drinkki" />
 	

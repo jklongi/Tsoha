@@ -15,7 +15,7 @@
 				$rivi = mysqli_fetch_row($perustiedot);
 				$maara = mysqli_num_rows($perustiedot);
 				
-				echo "Nimi: $rivi[1] <br/>Tyyppi: $rivi[2]<br/>Lasi: $rivi[3] <br/>Lisaaja: $rivi[4]<br/>";
+				echo "<B>Nimi:</b> $rivi[1] <br/><B>Tyyppi:</B> $rivi[2]<br/><B>Lasi:</B> $rivi[3] <br/><B>Lisääjä:</B> $rivi[4]<br/>";
 				
 				$ainekset = mysqli_query($connection ,"
 					
@@ -25,7 +25,10 @@
 				"
 				) or die('Kysely ei onnistunut');
 
-				echo "Ainekset: ";
+				echo "<B>Ainekset:</B> ";
+				
+				$alkoholi = 0;
+				$tilavuus = 0;
 				while ($raaka_ainekset = mysqli_fetch_array($ainekset)) {
 					$tulokset = mysqli_query($connection, "
 					SELECT * 
@@ -38,15 +41,24 @@
 					$ainesnimi = $aineet["nimi"];
 					$yksikko = $aineet["yksikko"];
 					$ohjeet = $aineet["yksikko"];
+					$prosentti = $aineet["alkoholiprosentti"];
+					$alkoholi = $alkoholi + $prosentti * $maara;
+					$tilavuus = $tilavuus + $maara;
+					
+					
 					echo "$ainesnimi $maara $yksikko";
 					echo ", ";
 				}
-				echo "<br/> ";
-				echo "<br/> ";
-				echo "$rivi[5] ";
-				echo "<br/> ";
-				echo "<br/> ";
+				$alkoholiprosentti = round($alkoholi / $tilavuus, 2);
 				
+				echo "<br/>";
+				echo "<B>Alkoholipitoisuus:</B> $alkoholiprosentti %";
+				echo "<br/><br/> ";
+				echo "$rivi[5] ";
+				echo "<br/><br/> ";
+				
+				
+				//Ylläpito
 				if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
 					echo "<a href=\"index.php?page=deletecomment&id=".$drinkID."\">Hallitse kommentteja</a>";
 					echo "<br/> ";

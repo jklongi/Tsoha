@@ -2,7 +2,9 @@
 <html>
 	<?php
 		include("database.php");
-		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
+		//ylläpito
+		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
+			//Jos lomakkeesta tulee "POST" lisätään raaka-aine
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$nimi= mysql_real_escape_string($_POST['nimi']);
 				$alkoholi = mysql_real_escape_string($_POST['alkoholi']);
@@ -21,6 +23,7 @@
 				echo "Lisäys onnistui!<br />";
 			
 			}
+			//mikäli osoitteen POST id=jotain , poistetaan kyseinen id
 			if (isset($_GET['id'])){
 				$poistettava = $_GET['id'];
 				$aineet = mysqli_query($connection ,"

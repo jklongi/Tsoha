@@ -19,7 +19,7 @@
 				
 				<div id="main">
 				<?php
-
+				//näytetään eri sisältö riippuen sivuvalinnasta
 					if (isset($_GET['page'])) {
 						if ($_GET['page'] === "login")
 							include 'login.php';

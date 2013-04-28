@@ -3,6 +3,7 @@
 	<?php
 		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
 		include("database.php");
+			//lisää uusi raaka-aine lomakkeesta
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$ainesID = $_POST['ainekset'];
 				$maara= $_POST['maara'];
@@ -20,7 +21,21 @@
 				header("location: /index.php?page=editcocktail&id=".$id."");
 
 			}
-	
+			//poista kaikki tietyn drinkkiID:n raaka-aineet
+			if (isset($_GET['delid'])){
+				$poistettava = $_GET['delid'];
+				$aineet = mysqli_query($connection ,"
+				DELETE
+				FROM 	raaka_ainekset
+				WHERE drinkkiID = '$poistettava'
+				"
+				) or die('Kysely ei onnistunut');
+				echo "<br />";
+				echo "Aineet poistettu onnistuneesti!";
+				header("location: /index.php?page=editcocktail&id=".$poistettava."");
+				
+			}
+			//näytä tietyn drinkkiID tiedot
 			if (isset($_GET['id'])){
 				echo "<br /><br />";
 				$id = $_GET['id'];
@@ -65,6 +80,7 @@
 				echo "$rivi[5] ";
 				echo "<br/> ";
 				echo "<br/> ";
+				echo "<td><a href=\"index.php?page=editcocktail&delid=".$id."\">Tyhjennä raaka-aineet</a></td>";
 				
 			}
 	}		
@@ -110,5 +126,6 @@
 				<label></label><input type="submit" value="Lisää Raaka-aine" />
 	
 			</form>
+			
 	</body>
 </html>

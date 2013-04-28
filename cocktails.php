@@ -6,8 +6,8 @@
 		echo "Hae drinkkejä hakusanoilla tai tyypin mukaan.";
 	?>
 	<body>
-		<form action ="index.php?=pagecocktails.php" method = "post" >
-			<input type="search" name = "sanahaku" />
+		<form action ="index.php?=pagecocktails.php" method = "post">
+			<input type="search" name = "sanahaku"  />
 			<input type="submit" name="submit" value="Hae" /> <br/ >
 			<label>Drinkki</label><input type="checkbox" value="Yes" name = "drinkki" />
 			<label>Shotti</label><input type="checkbox" value="Yes" name = "shotti"/>
@@ -17,18 +17,7 @@
 		</form>
 	</body>
 	<br/>
-	<?php
-		if (isset($_GET['delid'])){
-				$poistettava = $_GET['delid'];
-				$drinkki = mysqli_query($connection ,"
-				DELETE
-				FROM 	drinkki
-				WHERE drinkkiID = '$poistettava'
-				"
-				) or die('Kysely ei onnistunut');
-				echo "Drinkki poistettu onnistuneesti!";
-		}
-			
+	<?php	
 		if (isset($_POST['submit']))
 			{
 				$hakusana = mysql_real_escape_string($_POST['sanahaku']);
@@ -58,7 +47,7 @@
 				} else{
 					$booli = NULL;
 				}
-
+				//Jos mitään ei valittu, pelkkä sanahaku
 				if(is_null($drink) && is_null($shotti)&& is_null($alkoholiton) && is_null($kuuma) && is_null($booli)){
 					$tulokset = mysqli_query($connection ,"
 						SELECT 	*
@@ -68,6 +57,7 @@
 					"
 					) ;
 				} else {
+				//Mikäli valittiin jotain, molemmat
 					$tulokset = mysqli_query($connection ,"
 						SELECT 	*
 						FROM 	drinkki
@@ -81,7 +71,7 @@
 				$maara = mysqli_num_rows($tulokset);
 				
 				echo "Hakuehdoilla löytyi $maara tulosta: <br/><br/>";
-				
+				//Jokaiselle tulokselle linkki omalla id:llä
 				while ($rivi = mysqli_fetch_assoc($tulokset)) {
 					$linkinnimi = $rivi["drinkkinimi"];
 					$linkID = $rivi["drinkkiID"];
@@ -93,9 +83,10 @@
 				}
 
 			} else{
-				
+			//näytetään tyhjää, mikälie ei haun avulla ole valittu drinkkiä
 				include("display.php");
 				if (isset($_GET['cocktailid'])){
+				//jos ollaan jonkin drinkin tiedoissa, näytetään sen kommentit
 					include("comment.php");
 				}
 			}

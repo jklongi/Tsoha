@@ -6,9 +6,7 @@
 		{
 			$tunnus = array_map('mysql_real_escape_string', $_POST);
 			$tunnus['salasana'] = ($tunnus['salasana']);
-			//session_register($tunnus['kayttaja']);
-			
-		
+
 			$kayttaja = $tunnus['kayttaja'];
 			$salasana = $tunnus['salasana'];
 			
@@ -23,7 +21,7 @@
 			
 			$rivi = mysqli_fetch_row($query);
 			$maara = mysqli_num_rows($query);
-			
+			//Jos vain yksi oikea tulos, kirjaudutaan sisään asettamalla session muuttujat
 			if ($maara == 1) {
 				session_start();
 				$_SESSION['nimi'] = $rivi[1];	

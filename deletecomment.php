@@ -2,7 +2,8 @@
 <html>
 	<?php
 		include("database.php");
-		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) { 
+		if(isset($_SESSION['admin']) && ($_SESSION['admin'])==1) {
+				//poistetaan POST commentid=jotain kommentti
 				if (isset($_GET['commentid'])){
 					$poistettava = $_GET['commentid'];
 					$aineet = mysqli_query($connection ,"
@@ -15,6 +16,7 @@
 					echo "Kommentti poistettu onnistuneesti!<br/>";
 
 				}
+				//näytetään kaikki tietyn drinkin kommentit helpommin luettavassa muodossa(ei textareassa)
 				if (isset($_GET['id'])){
 					$drinkkiID = $_GET['id'];
 					$kommentit = mysqli_query($connection ,"
